@@ -1,0 +1,2485 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Krishan Kumar | Portfolio</title>
+
+  <style>
+
+    /* =========================================================
+       GLOBAL
+    ========================================================= */
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 90px;
+    }
+
+    body {
+      min-height: 100%;
+      font-family: "Segoe UI", Arial, sans-serif;
+      color: #fff;
+      overflow-x: hidden;
+      background: #000;
+    }
+
+    section {
+      position: relative;
+      min-height: 100vh;
+    }
+
+
+    /* =========================================================
+       FIXED BACKGROUND VIDEO
+    ========================================================= */
+
+    #bg-video {
+      position: fixed;
+      inset: 0;
+
+      width: 100%;
+      height: 100%;
+
+      object-fit: cover;
+
+      z-index: -10;
+    }
+
+    .overlay {
+      position: fixed;
+      inset: 0;
+
+      background: rgba(0, 0, 0, 0.40);
+
+      z-index: -9;
+
+      pointer-events: none;
+    }
+
+
+    /* =========================================================
+       FIXED NAVBAR
+    ========================================================= */
+
+    nav {
+      position: fixed;
+
+      top: 0;
+      left: 0;
+
+      width: 100%;
+
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      gap: 14px;
+
+      padding: 18px 10px;
+
+      flex-wrap: wrap;
+
+      z-index: 1000;
+
+      background: linear-gradient(
+        to bottom,
+        rgba(0,0,0,0.35),
+        rgba(0,0,0,0)
+      );
+
+      backdrop-filter: blur(3px);
+    }
+
+    nav a {
+      color: #fff;
+
+      text-decoration: none;
+
+      font-size: 0.95rem;
+
+      padding: 8px 22px;
+
+      border: 1.5px solid rgba(255,255,255,0.7);
+
+      border-radius: 999px;
+
+      background: rgba(255,255,255,0.08);
+
+      backdrop-filter: blur(6px);
+
+      transition:
+        background 0.25s,
+        color 0.25s,
+        transform 0.25s;
+    }
+
+    nav a:hover,
+    nav a.active {
+      background: #fff;
+      color: #111;
+
+      transform: translateY(-2px);
+    }
+
+
+    /* =========================================================
+       HOME / HERO
+    ========================================================= */
+
+    #home {
+      min-height: 100vh;
+
+      display: flex;
+
+      justify-content: space-between;
+
+      align-items: center;
+
+      padding:
+        100px
+        6vw
+        60px;
+
+      gap: 30px;
+    }
+
+    .intro h1 {
+      font-size: clamp(2.2rem, 5vw, 4.2rem);
+
+      line-height: 1.1;
+
+      letter-spacing: 2px;
+
+      text-transform: uppercase;
+    }
+
+    .intro p {
+      margin-top: 12px;
+
+      font-size: clamp(1rem, 1.6vw, 1.3rem);
+
+      opacity: 0.9;
+    }
+
+
+    /* =========================================================
+       INTRO PLAY BUTTON
+    ========================================================= */
+
+    .play-btn {
+      margin-top: 40px;
+
+      width: 110px;
+      height: 110px;
+
+      border-radius: 50%;
+
+      border: 2px solid rgba(255,255,255,0.8);
+
+      background: rgba(255,255,255,0.08);
+
+      backdrop-filter: blur(6px);
+
+      display: flex;
+
+      align-items: center;
+      justify-content: center;
+
+      cursor: pointer;
+
+      transition: 0.3s;
+
+      animation: pulse 2.2s infinite;
+    }
+
+    .play-btn:hover {
+      transform: scale(1.08);
+    }
+
+    .play-inner {
+      width: 70px;
+      height: 70px;
+
+      border-radius: 50%;
+
+      border: 2px solid #fff;
+
+      display: flex;
+
+      align-items: center;
+      justify-content: center;
+
+      background: rgba(255,255,255,0.15);
+    }
+
+    .play-inner::before {
+      content: "";
+
+      margin-left: 6px;
+
+      border-style: solid;
+
+      border-width:
+        12px
+        0
+        12px
+        20px;
+
+      border-color:
+        transparent
+        transparent
+        transparent
+        #fff;
+    }
+
+    @keyframes pulse {
+
+      0% {
+        box-shadow:
+          0 0 0 0
+          rgba(255,255,255,0.45);
+      }
+
+      70% {
+        box-shadow:
+          0 0 0 22px
+          rgba(255,255,255,0);
+      }
+
+      100% {
+        box-shadow:
+          0 0 0 0
+          rgba(255,255,255,0);
+      }
+    }
+
+    .play-label {
+      display: block;
+
+      margin-top: 10px;
+
+      font-size: 0.85rem;
+
+      opacity: 0.8;
+    }
+
+
+    /* =========================================================
+       LINKEDIN / GITHUB CARDS
+    ========================================================= */
+
+    .cards {
+      display: flex;
+
+      gap: 30px;
+
+      align-items: flex-start;
+
+      padding-right: 2vw;
+    }
+
+    .social-card {
+      display: block;
+
+      height: clamp(260px, 52vh, 480px);
+
+      aspect-ratio: 687 / 1024;
+
+      border-radius: 18px;
+
+      overflow: hidden;
+
+      box-shadow:
+        0 10px 35px
+        rgba(0,0,0,0.5);
+
+      transition:
+        transform 0.3s,
+        box-shadow 0.3s;
+    }
+
+    .social-card img {
+      width: 100%;
+      height: 100%;
+
+      object-fit: cover;
+
+      display: block;
+    }
+
+    .social-card:hover {
+      transform:
+        translateY(-8px)
+        scale(1.03);
+
+      box-shadow:
+        0 18px 45px
+        rgba(0,0,0,0.7);
+    }
+
+    .social-card.linkedin {
+      margin-top: -30px;
+    }
+
+    .social-card.github {
+      margin-top: 90px;
+    }
+
+
+    /* =========================================================
+       GENERAL SECTION
+    ========================================================= */
+
+    .content-section {
+
+      min-height: 100vh;
+
+      padding:
+        120px
+        7vw
+        80px;
+
+      display: flex;
+
+      flex-direction: column;
+
+      justify-content: center;
+
+      align-items: center;
+
+      text-align: center;
+    }
+
+    .section-title {
+
+      font-size:
+        clamp(
+          2rem,
+          5vw,
+          4rem
+        );
+
+      letter-spacing: 2px;
+
+      text-transform: uppercase;
+
+      margin-bottom: 15px;
+    }
+
+    .section-subtitle {
+
+      max-width: 750px;
+
+      font-size: 1rem;
+
+      line-height: 1.7;
+
+      color: rgba(255,255,255,0.78);
+    }
+
+
+    /* =========================================================
+       EXPERIENCE
+    ========================================================= */
+
+    #experience {
+
+      background:
+        linear-gradient(
+          rgba(0,0,0,0.18),
+          rgba(0,0,0,0.18)
+        );
+    }
+
+    .experience-grid {
+
+      width: 100%;
+
+      max-width: 1100px;
+
+      margin-top: 45px;
+
+      display: grid;
+
+      grid-template-columns:
+        repeat(
+          auto-fit,
+          minmax(260px,1fr)
+        );
+
+      gap: 25px;
+    }
+
+    .experience-card {
+
+      text-align: left;
+
+      padding: 30px;
+
+      border:
+        1px solid
+        rgba(255,255,255,0.25);
+
+      border-radius: 20px;
+
+      background:
+        rgba(255,255,255,0.08);
+
+      backdrop-filter: blur(12px);
+
+      box-shadow:
+        0 15px 40px
+        rgba(0,0,0,0.25);
+
+      transition:
+        transform 0.3s,
+        background 0.3s;
+    }
+
+    .experience-card:hover {
+
+      transform: translateY(-8px);
+
+      background:
+        rgba(255,255,255,0.13);
+    }
+
+    .experience-card h3 {
+
+      font-size: 1.35rem;
+
+      margin-bottom: 8px;
+    }
+
+    .experience-card .company {
+
+      opacity: 0.75;
+
+      margin-bottom: 15px;
+    }
+
+    .experience-card p {
+
+      line-height: 1.65;
+
+      color:
+        rgba(255,255,255,0.78);
+    }
+
+
+    /* =========================================================
+       SKILLS
+    ========================================================= */
+
+    #skills {
+
+      min-height: 100vh;
+    }
+
+    .skills-container {
+
+      width: 100%;
+
+      max-width: 1000px;
+
+      margin-top: 45px;
+
+      display: flex;
+
+      flex-wrap: wrap;
+
+      justify-content: center;
+
+      gap: 14px;
+    }
+
+    .skill {
+
+      padding:
+        12px
+        20px;
+
+      border:
+        1px solid
+        rgba(255,255,255,0.35);
+
+      border-radius: 999px;
+
+      background:
+        rgba(255,255,255,0.08);
+
+      backdrop-filter: blur(8px);
+
+      transition: 0.25s;
+    }
+
+    .skill:hover {
+
+      background: #fff;
+
+      color: #111;
+
+      transform:
+        translateY(-4px)
+        scale(1.04);
+    }
+
+
+    /* =========================================================
+       PROJECTS
+    ========================================================= */
+
+    #projects {
+      min-height: 100vh;
+    }
+
+    .projects-grid {
+
+      width: 100%;
+
+      max-width: 1100px;
+
+      margin-top: 45px;
+
+      display: grid;
+
+      grid-template-columns:
+        repeat(
+          auto-fit,
+          minmax(250px,1fr)
+        );
+
+      gap: 25px;
+    }
+
+    .project-card {
+
+      min-height: 230px;
+
+      padding: 30px;
+
+      text-align: left;
+
+      border:
+        1px solid
+        rgba(255,255,255,0.25);
+
+      border-radius: 20px;
+
+      background:
+        rgba(255,255,255,0.08);
+
+      backdrop-filter: blur(12px);
+
+      transition:
+        transform 0.3s,
+        background 0.3s;
+    }
+
+    .project-card:hover {
+
+      transform:
+        translateY(-8px);
+
+      background:
+        rgba(255,255,255,0.14);
+    }
+
+    .project-card h3 {
+
+      font-size: 1.4rem;
+
+      margin-bottom: 12px;
+    }
+
+    .project-card p {
+
+      color:
+        rgba(255,255,255,0.78);
+
+      line-height: 1.65;
+    }
+
+    .project-card a {
+
+      display: inline-block;
+
+      margin-top: 20px;
+
+      color: #fff;
+
+      text-decoration: none;
+
+      border-bottom:
+        1px solid #fff;
+    }
+
+
+    /* =========================================================
+       CERTIFICATE SECTION
+    ========================================================= */
+
+    #certificates {
+
+      min-height: 100vh;
+
+      position: relative;
+
+      overflow: hidden;
+
+      padding-top: 110px;
+    }
+
+    .certificate-stage {
+
+      position: relative;
+
+      width: 100%;
+
+      height: calc(100vh - 110px);
+
+      min-height: 600px;
+    }
+
+    .certificate-scene {
+
+      position: absolute;
+
+      inset: 0;
+
+      perspective: 1600px;
+
+      perspective-origin:
+        50% 45%;
+    }
+
+    .certificate-ring {
+
+      position: absolute;
+
+      left: 50%;
+
+      top: 50%;
+
+      width: 0;
+
+      height: 0;
+
+      transform-style: preserve-3d;
+
+      transform:
+        translateY(-6%)
+        rotateX(-30deg);
+    }
+
+    .certificate-spin {
+
+      position: absolute;
+
+      inset: 0;
+
+      transform-style: preserve-3d;
+
+      animation:
+        certificateSpin
+        80s
+        linear
+        infinite;
+    }
+
+    .certificate-stage.pause
+    .certificate-spin,
+
+    .certificate-stage.lock
+    .certificate-spin {
+
+      animation-play-state: paused;
+    }
+
+    @keyframes certificateSpin {
+
+      to {
+
+        transform:
+          rotateY(360deg);
+      }
+    }
+
+    .certificate-card {
+
+      position: absolute;
+
+      width: 150px;
+
+      height: 105px;
+
+      left: -75px;
+
+      top: -52px;
+
+      background: #ccc center/cover;
+
+      overflow: hidden;
+
+      box-shadow:
+        0 2px 8px
+        rgba(0,0,0,0.25);
+
+      cursor: pointer;
+
+      transition:
+        filter 0.2s;
+    }
+
+    .certificate-card img {
+
+      width: 100%;
+
+      height: 100%;
+
+      object-fit: cover;
+
+      display: block;
+    }
+
+    .certificate-card:hover {
+
+      filter: brightness(1.08);
+    }
+
+
+    /* =========================================================
+       CERTIFICATE CENTER
+    ========================================================= */
+
+    .certificate-center {
+
+      position: absolute;
+
+      left: 50%;
+
+      top: 47%;
+
+      transform:
+        translate(-50%,-50%);
+
+      text-align: center;
+
+      width:
+        min(86vw,340px);
+
+      pointer-events: none;
+
+      z-index: 5;
+    }
+
+    .certificate-center h2 {
+
+      font-weight: 500;
+
+      font-size:
+        clamp(
+          22px,
+          2.6vw,
+          30px
+        );
+
+      line-height: 1.15;
+
+      margin:
+        0 0 6px;
+
+      letter-spacing:
+        -0.01em;
+    }
+
+    .certificate-center p {
+
+      margin:
+        0 0 22px;
+
+      color:
+        rgba(255,255,255,0.65);
+
+      font-size: 13px;
+    }
+
+    .certificate-preview {
+
+      width: 100%;
+
+      aspect-ratio: 1.5;
+
+      background:
+        #ddd
+        center/cover
+        no-repeat;
+
+      box-shadow:
+        0 4px 14px
+        rgba(0,0,0,0.25);
+
+      pointer-events: auto;
+
+      cursor: zoom-in;
+
+      border-radius: 3px;
+    }
+
+    .certificate-center small {
+
+      display: block;
+
+      margin-top: 10px;
+
+      font-size: 13px;
+
+      color:
+        rgba(255,255,255,0.75);
+    }
+
+
+    /* =========================================================
+       CERTIFICATE CATEGORY LABELS
+    ========================================================= */
+
+    .certificate-label {
+
+      position: absolute;
+
+      font-size: 14px;
+
+      padding-bottom: 2px;
+
+      border-bottom:
+        1px solid
+        rgba(255,255,255,0.55);
+
+      cursor: pointer;
+
+      white-space: nowrap;
+
+      z-index: 10;
+    }
+
+    .certificate-label sup {
+
+      font-size: 8px;
+
+      color:
+        rgba(255,255,255,0.55);
+
+      margin-left: 3px;
+    }
+
+    .certificate-label:hover,
+    .certificate-label.on {
+
+      border-color: #fff;
+    }
+
+
+    /* =========================================================
+       CERTIFICATE LIGHTBOX
+    ========================================================= */
+
+    #certificate-lightbox {
+
+      position: fixed;
+
+      inset: 0;
+
+      background:
+        rgba(0,0,0,0.88);
+
+      display: none;
+
+      align-items: center;
+
+      justify-content: center;
+
+      z-index: 2000;
+
+      cursor: zoom-out;
+
+      padding: 20px;
+
+      box-sizing: border-box;
+    }
+
+    #certificate-lightbox.show {
+
+      display: flex;
+    }
+
+    #certificate-lightbox img {
+
+      max-width: 100%;
+
+      max-height: 90vh;
+
+      box-shadow:
+        0 8px 40px
+        rgba(0,0,0,0.5);
+
+      border-radius: 5px;
+    }
+
+
+    /* =========================================================
+       INTRO VIDEO MODAL
+    ========================================================= */
+
+    .intro-modal {
+
+      position: fixed;
+
+      inset: 0;
+
+      background:
+        rgba(0,0,0,0.88);
+
+      display: none;
+
+      align-items: center;
+
+      justify-content: center;
+
+      z-index: 1500;
+
+      padding: 20px;
+    }
+
+    .intro-modal.open {
+
+      display: flex;
+    }
+
+    .intro-modal-box {
+
+      position: relative;
+
+      width:
+        min(900px,100%);
+    }
+
+    .intro-modal-box video {
+
+      width: 100%;
+
+      max-height: 80vh;
+
+      border-radius: 12px;
+
+      background: #000;
+    }
+
+    .intro-close {
+
+      position: absolute;
+
+      top: -42px;
+
+      right: 0;
+
+      background: none;
+
+      border: none;
+
+      color: #fff;
+
+      font-size: 2rem;
+
+      cursor: pointer;
+    }
+
+
+    /* =========================================================
+       MOBILE
+    ========================================================= */
+
+    @media (max-width: 800px) {
+
+      nav {
+
+        gap: 7px;
+
+        padding: 12px 7px;
+      }
+
+      nav a {
+
+        font-size: 0.78rem;
+
+        padding:
+          7px
+          13px;
+      }
+
+      #home {
+
+        flex-direction: column;
+
+        justify-content: center;
+
+        text-align: center;
+
+        padding-top: 120px;
+      }
+
+      .intro {
+
+        display: flex;
+
+        flex-direction: column;
+
+        align-items: center;
+      }
+
+      .cards {
+
+        padding-right: 0;
+      }
+
+      .social-card {
+
+        height:
+          clamp(
+            220px,
+            38vh,
+            340px
+          );
+      }
+
+      .social-card.linkedin {
+
+        margin-top: 0;
+      }
+
+      .social-card.github {
+
+        margin-top: 40px;
+      }
+
+      .certificate-card {
+
+        width: 100px;
+
+        height: 70px;
+
+        left: -50px;
+
+        top: -35px;
+      }
+
+      .certificate-label {
+
+        font-size: 11px;
+      }
+
+      .certificate-stage {
+
+        min-height: 600px;
+      }
+    }
+
+    @media (max-width: 550px) {
+
+      .cards {
+
+        gap: 15px;
+      }
+
+      .social-card {
+
+        height: 280px;
+      }
+
+      .social-card.github {
+
+        margin-top: 25px;
+      }
+
+      .certificate-preview {
+
+        width: 90vw;
+      }
+    }
+
+  </style>
+</head>
+
+
+<body>
+
+
+  <!-- =======================================================
+       FIXED BACKGROUND
+  ======================================================== -->
+
+  <video
+    id="bg-video"
+    autoplay
+    muted
+    loop
+    playsinline
+  >
+    <source
+      src="sea-of-silence.3840x2160.mp4"
+      type="video/mp4"
+    >
+  </video>
+
+  <div class="overlay"></div>
+
+
+  <!-- =======================================================
+       FIXED NAVBAR
+  ======================================================== -->
+
+  <nav id="navbar">
+
+    <a
+      href="#home"
+      class="active"
+    >
+      Home
+    </a>
+
+    <a href="#experience">
+      Experience
+    </a>
+
+    <a href="#skills">
+      Skills
+    </a>
+
+    <a href="#projects">
+      Projects
+    </a>
+
+    <a href="#certificates">
+      Certificates
+    </a>
+
+  </nav>
+
+
+  <!-- =======================================================
+       HOME
+  ======================================================== -->
+
+  <section id="home">
+
+    <div class="intro">
+
+      <h1>
+        Krishan<br>
+        ㅤㅤKumar
+      </h1>
+
+      <p>
+        AI-ML / Data Analyst
+      </p>
+
+
+      <div
+        class="play-btn"
+        id="playBtn"
+        title="Play Introduction"
+      >
+
+        <div class="play-inner"></div>
+
+      </div>
+
+      <span class="play-label">
+        Watch my intro
+      </span>
+
+    </div>
+
+
+    <!-- SOCIAL CARDS -->
+
+    <div class="cards">
+
+      <a
+        class="social-card linkedin"
+        href="https://www.linkedin.com/in/krishan-kumar-ai/"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+
+        <img
+          src="LinkedIn card.png"
+          alt="LinkedIn - Krishan Kumar"
+        >
+
+      </a>
+
+
+      <a
+        class="social-card github"
+        href="https://github.com/krishn723"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+
+        <img
+          src="github card.png"
+          alt="GitHub - krishn723"
+        >
+
+      </a>
+
+    </div>
+
+  </section>
+
+
+
+  <!-- =======================================================
+       EXPERIENCE
+  ======================================================== -->
+
+  <section
+    id="experience"
+    class="content-section"
+  >
+
+    <h2 class="section-title">
+      Experience
+    </h2>
+
+    <p class="section-subtitle">
+      My professional experience in Artificial Intelligence,
+      Machine Learning, Data Science and Software Development.
+    </p>
+
+
+    <div class="experience-grid">
+
+
+      <div class="experience-card">
+
+        <h3>
+          Generative AI / Machine Learning Intern
+        </h3>
+
+        <div class="company">
+          RegEX — Jaipur
+        </div>
+
+        <p>
+          Worked on AI and Machine Learning applications,
+          including NavIC signal processing and deep learning
+          models using TensorFlow and PyTorch.
+        </p>
+
+      </div>
+
+
+      <div class="experience-card">
+
+        <h3>
+          Python Development Intern
+        </h3>
+
+        <div class="company">
+          Intermpe
+        </div>
+
+        <p>
+          Developed Python-based applications and REST APIs
+          using Flask, with focus on backend development and
+          practical software engineering.
+        </p>
+
+      </div>
+
+
+      <div class="experience-card">
+
+        <h3>
+          Python with AI Intern
+        </h3>
+
+        <div class="company">
+          EWB Edu Tech
+        </div>
+
+        <p>
+          Worked with Python and Artificial Intelligence
+          concepts through practical projects and
+          implementation-oriented tasks.
+        </p>
+
+      </div>
+
+
+    </div>
+
+  </section>
+
+
+
+  <!-- =======================================================
+       SKILLS
+  ======================================================== -->
+
+  <section
+    id="skills"
+    class="content-section"
+  >
+
+    <h2 class="section-title">
+      Skills
+    </h2>
+
+    <p class="section-subtitle">
+      Technologies and tools I use for building AI,
+      data-driven and software applications.
+    </p>
+
+
+    <div class="skills-container">
+
+      <span class="skill">Python</span>
+
+      <span class="skill">C</span>
+
+      <span class="skill">C++</span>
+
+      <span class="skill">Machine Learning</span>
+
+      <span class="skill">Deep Learning</span>
+
+      <span class="skill">Generative AI</span>
+
+      <span class="skill">Data Analysis</span>
+
+      <span class="skill">TensorFlow</span>
+
+      <span class="skill">PyTorch</span>
+
+      <span class="skill">Scikit-learn</span>
+
+      <span class="skill">Flask</span>
+
+      <span class="skill">REST APIs</span>
+
+      <span class="skill">SQL</span>
+
+      <span class="skill">Git</span>
+
+      <span class="skill">GitHub</span>
+
+      <span class="skill">HTML</span>
+
+      <span class="skill">CSS</span>
+
+      <span class="skill">JavaScript</span>
+
+    </div>
+
+  </section>
+
+
+
+  <!-- =======================================================
+       PROJECTS
+  ======================================================== -->
+
+  <section
+    id="projects"
+    class="content-section"
+  >
+
+    <h2 class="section-title">
+      Projects
+    </h2>
+
+    <p class="section-subtitle">
+      Selected projects involving Artificial Intelligence,
+      Machine Learning, data processing and software development.
+    </p>
+
+
+    <div class="projects-grid">
+
+
+      <div class="project-card">
+
+        <h3>
+          AI Impact Simulator
+        </h3>
+
+        <p>
+          A multi-agent simulation platform designed to study
+          how AI-driven decisions can influence society,
+          economy, employment, resources and public systems.
+        </p>
+
+        <a
+          href="https://github.com/krishn723"
+          target="_blank"
+        >
+          View Project
+        </a>
+
+      </div>
+
+
+      <div class="project-card">
+
+        <h3>
+          Smart File Organizer
+        </h3>
+
+        <p>
+          A desktop utility that automatically organizes
+          files into appropriate categories based on file
+          type and directory structure.
+        </p>
+
+        <a
+          href="https://github.com/krishn723/Smart-File-Organizer"
+          target="_blank"
+        >
+          View Project
+        </a>
+
+      </div>
+
+
+      <div class="project-card">
+
+        <h3>
+          IntelliMail Shield
+        </h3>
+
+        <p>
+          An intelligent email analysis project focused on
+          machine learning based classification and
+          automated detection of unwanted messages.
+        </p>
+
+        <a
+          href="https://github.com/krishn723"
+          target="_blank"
+        >
+          View Project
+        </a>
+
+      </div>
+
+
+      <div class="project-card">
+
+        <h3>
+          Image Compression
+        </h3>
+
+        <p>
+          A browser-based image compression application
+          using HTML5 Canvas for offline image processing
+          and size reduction.
+        </p>
+
+        <a
+          href="https://github.com/krishn723/image-compress"
+          target="_blank"
+        >
+          View Project
+        </a>
+
+      </div>
+
+
+      <div class="project-card">
+
+        <h3>
+          Bank Dashboard
+        </h3>
+
+        <p>
+          A Flask-based banking dashboard interface designed
+          to visualize and manage banking-related data
+          through a web application.
+        </p>
+
+        <a
+          href="https://github.com/krishn723/Bank_Dashboard"
+          target="_blank"
+        >
+          View Project
+        </a>
+
+      </div>
+
+
+      <div class="project-card">
+
+        <h3>
+          Custom Droid
+        </h3>
+
+        <p>
+          An Android application concept for controlling
+          device settings through natural language commands
+          using AI.
+        </p>
+
+        <a
+          href="https://github.com/krishn723"
+          target="_blank"
+        >
+          View Project
+        </a>
+
+      </div>
+
+
+    </div>
+
+  </section>
+
+
+
+  <!-- =======================================================
+       CERTIFICATES
+  ======================================================== -->
+
+  <section id="certificates">
+
+    <div
+      class="certificate-stage"
+      id="certificateStage"
+    >
+
+
+      <!-- 3D SCENE -->
+
+      <div class="certificate-scene">
+
+        <div class="certificate-ring">
+
+          <div
+            class="certificate-spin"
+            id="certificateSpin"
+          ></div>
+
+        </div>
+
+      </div>
+
+
+      <!-- CENTER -->
+
+      <div class="certificate-center">
+
+        <h2 id="certificateTitle">
+          Academic Certificates
+        </h2>
+
+        <p id="certificateSub">
+          Krishan Kumar
+        </p>
+
+        <div
+          class="certificate-preview"
+          id="certificatePic"
+        ></div>
+
+        <small id="certificateCaption">
+          Click any certificate to view
+        </small>
+
+      </div>
+
+
+    </div>
+
+  </section>
+
+
+
+  <!-- =======================================================
+       CERTIFICATE LIGHTBOX
+  ======================================================== -->
+
+  <div
+    id="certificate-lightbox"
+  >
+
+    <img
+      id="certificateLightboxImg"
+      alt=""
+    >
+
+  </div>
+
+
+
+  <!-- =======================================================
+       INTRO VIDEO MODAL
+  ======================================================== -->
+
+  <div
+    class="intro-modal"
+    id="videoModal"
+  >
+
+    <div class="intro-modal-box">
+
+      <button
+        class="intro-close"
+        id="closeBtn"
+        aria-label="Close"
+      >
+        &times;
+      </button>
+
+      <video
+        id="introVideo"
+        controls
+      >
+
+        <source
+          src="Introduction.mp4"
+          type="video/mp4"
+        >
+
+      </video>
+
+    </div>
+
+  </div>
+
+
+
+  <!-- =======================================================
+       JAVASCRIPT
+  ======================================================== -->
+
+  <script>
+
+
+    /* =======================================================
+       INTRO VIDEO
+    ======================================================== */
+
+    const playBtn =
+      document.getElementById("playBtn");
+
+    const modal =
+      document.getElementById("videoModal");
+
+    const closeBtn =
+      document.getElementById("closeBtn");
+
+    const introVideo =
+      document.getElementById("introVideo");
+
+
+    function openIntroModal() {
+
+      modal.classList.add("open");
+
+      introVideo.currentTime = 0;
+
+      introVideo.play();
+
+    }
+
+
+    function closeIntroModal() {
+
+      modal.classList.remove("open");
+
+      introVideo.pause();
+
+    }
+
+
+    playBtn.addEventListener(
+      "click",
+      openIntroModal
+    );
+
+
+    closeBtn.addEventListener(
+      "click",
+      closeIntroModal
+    );
+
+
+    modal.addEventListener(
+      "click",
+      function(e) {
+
+        if (e.target === modal) {
+
+          closeIntroModal();
+
+        }
+
+      }
+    );
+
+
+    document.addEventListener(
+      "keydown",
+      function(e) {
+
+        if (e.key === "Escape") {
+
+          closeIntroModal();
+
+        }
+
+      }
+    );
+
+
+
+    /* =======================================================
+       CERTIFICATE DATA
+    ======================================================== */
+
+    const CERTIFICATE_DIR =
+      "certificates/";
+
+
+    const certificateCategories = [
+
+      {
+        name: "Internships",
+        position: "left:46%;top:2%"
+      },
+
+      {
+        name: "Hackathons & Techfests",
+        position: "left:70%;top:12%"
+      },
+
+      {
+        name: "Training & Courses",
+        position: "left:84%;top:58%"
+      },
+
+      {
+        name: "Bootcamp & Events",
+        position: "left:70%;top:92%"
+      }
+
+    ];
+
+
+    const certificates = [
+
+      [
+        "AI-Internship_Avaintern.png",
+        "AI Internship, AvaIntern",
+        0
+      ],
+
+      [
+        "Ai-resume-screening_Project_approval.png",
+        "AI Resume Screening, Project Approval",
+        0
+      ],
+
+      [
+        "Color-Image-Compression_Smart-File-Organizer-Project-Approved.png",
+        "Color Image Compression & Smart File Organiser",
+        0
+      ],
+
+      [
+        "ML-GenAI-Internship_RegEX.jfif",
+        "ML & Generative AI Internship, RegEX",
+        0
+      ],
+
+      [
+        "Python-with-AI_Internship_EWB.png",
+        "Python with AI Internship, EWB Courses",
+        0
+      ],
+
+      [
+        "AnantNaturann-Anantam.jfif",
+        "Anant Netrunn Hackathon, Anantam",
+        1
+      ],
+
+      [
+        "Robowar-Anantam.jfif",
+        "Robowar, Anantam",
+        1
+      ],
+
+      [
+        "Beast-Mode-Hackathon.jfif",
+        "Beast-Mode Hackathon",
+        1
+      ],
+
+      [
+        "SIH-2024.jfif",
+        "Internal Smart India Hackathon 2024",
+        1
+      ],
+
+      [
+        "iit-bombay-spoken-tutorial-c_cpp.png",
+        "C & C++, IIT Bombay Spoken Tutorial",
+        2
+      ],
+
+      [
+        "iit-bombay-spoken-tutorial-Python.png",
+        "Python, IIT Bombay Spoken Tutorial",
+        2
+      ],
+
+      [
+        "iit-bombay-spoken-tutorial-java.png",
+        "Java, IIT Bombay Spoken Tutorial",
+        2
+      ],
+
+      [
+        "Industrial-Training_BKBIET.jfif",
+        "Industrial Training, BKBIET",
+        2
+      ],
+
+      [
+        "Introduction-to-DataScience_Infosis.png",
+        "Introduction to Data Science, Infosys Springboard",
+        2
+      ],
+
+      [
+        "AWS-Linux-World-Workshop.jfif",
+        "AWS Cloud with AI Workshop, LinuxWorld",
+        2
+      ],
+
+      [
+        "IDE_Bootcamp_AmityUniversity.jfif",
+        "IDE Bootcamp, Amity University",
+        3
+      ],
+
+      [
+        "Viksit_Bharat_Young_Leaders_Dialogue__VBYLD__2027_Certificate_Krishan_Kumar__1_.png",
+        "Viksit Bharat Young Leaders Dialogue 2027",
+        3
+      ]
+
+    ];
+
+
+    /* Repeat certificates around the ring */
+
+    const REPEAT = 2;
+
+    const certificateSequence = [];
+
+
+    for (
+      let r = 0;
+      r < REPEAT;
+      r++
+    ) {
+
+      certificates.forEach(
+        certificate => {
+
+          certificateSequence.push(
+            certificate
+          );
+
+        }
+      );
+
+    }
+
+
+
+    /* =======================================================
+       CERTIFICATE ELEMENTS
+    ======================================================== */
+
+    const certificateSpin =
+      document.getElementById(
+        "certificateSpin"
+      );
+
+    const certificateStage =
+      document.getElementById(
+        "certificateStage"
+      );
+
+    const certificateTitle =
+      document.getElementById(
+        "certificateTitle"
+      );
+
+    const certificateSub =
+      document.getElementById(
+        "certificateSub"
+      );
+
+    const certificatePic =
+      document.getElementById(
+        "certificatePic"
+      );
+
+    const certificateCaption =
+      document.getElementById(
+        "certificateCaption"
+      );
+
+    const certificateLightbox =
+      document.getElementById(
+        "certificate-lightbox"
+      );
+
+    const certificateLightboxImg =
+      document.getElementById(
+        "certificateLightboxImg"
+      );
+
+
+    const certificateSource =
+      certificate =>
+        CERTIFICATE_DIR +
+        encodeURI(
+          certificate[0]
+        );
+
+
+    let certificateRadius = 190;
+
+    let currentCertificate =
+      certificates[0];
+
+
+
+    /* =======================================================
+       BUILD 3D CERTIFICATE RING
+    ======================================================== */
+
+    function buildCertificateRing() {
+
+      certificateSpin.innerHTML = "";
+
+
+      const radius = Math.max(
+        Math.min(
+          window.innerWidth * 0.36,
+          520
+        ),
+        190
+      );
+
+
+      certificateRadius = radius;
+
+
+      certificateSequence.forEach(
+        (certificate,index) => {
+
+          const card =
+            document.createElement("div");
+
+
+          card.className =
+            "certificate-card";
+
+
+          card.style.transform =
+            `
+            rotateY(
+              ${
+                index /
+                certificateSequence.length *
+                360
+              }deg
+            )
+            translateZ(${radius}px)
+            rotateY(90deg)
+            `;
+
+
+          const image =
+            document.createElement("img");
+
+
+          image.src =
+            certificateSource(
+              certificate
+            );
+
+
+          image.alt =
+            certificate[1];
+
+
+          image.loading =
+            "lazy";
+
+
+          image.onerror =
+            function() {
+
+              image.remove();
+
+              card.style.background =
+                "linear-gradient(135deg,#9bb,#678)";
+
+            };
+
+
+          card.appendChild(
+            image
+          );
+
+
+          card.onmouseenter =
+            function() {
+
+              showCertificate(
+                certificate
+              );
+
+            };
+
+
+          card.onclick =
+            function() {
+
+              openCertificate(
+                certificate
+              );
+
+            };
+
+
+          certificateSpin.appendChild(
+            card
+          );
+
+        }
+      );
+
+    }
+
+
+
+    /* =======================================================
+       SHOW CERTIFICATE
+    ======================================================== */
+
+    function showCertificate(
+      certificate
+    ) {
+
+      currentCertificate =
+        certificate;
+
+
+      certificateTitle.textContent =
+        certificate[1];
+
+
+      certificateSub.textContent =
+        "Krishan Kumar";
+
+
+      certificatePic.style.backgroundImage =
+        `url("${certificateSource(
+          certificate
+        )}")`;
+
+
+      certificateCaption.textContent =
+        certificateCategories[
+          certificate[2]
+        ].name;
+
+
+      document
+        .querySelectorAll(
+          ".certificate-label"
+        )
+        .forEach(
+          label => {
+
+            label.classList.toggle(
+              "on",
+              label.dataset.category ==
+              certificate[2]
+            );
+
+          }
+        );
+
+    }
+
+
+
+    /* =======================================================
+       OPEN CERTIFICATE
+    ======================================================== */
+
+    function openCertificate(
+      certificate
+    ) {
+
+      certificateLightboxImg.src =
+        certificateSource(
+          certificate
+        );
+
+
+      certificateLightboxImg.alt =
+        certificate[1];
+
+
+      certificateLightbox.classList.add(
+        "show"
+      );
+
+
+      certificateStage.classList.add(
+        "lock"
+      );
+
+    }
+
+
+
+    /* =======================================================
+       CLOSE CERTIFICATE
+    ======================================================== */
+
+    function closeCertificate() {
+
+      certificateLightbox.classList.remove(
+        "show"
+      );
+
+
+      certificateStage.classList.remove(
+        "lock"
+      );
+
+    }
+
+
+    certificatePic.onclick =
+      function() {
+
+        openCertificate(
+          currentCertificate
+        );
+
+      };
+
+
+    certificateLightbox.onclick =
+      closeCertificate;
+
+
+
+    /* =======================================================
+       ESCAPE
+    ======================================================== */
+
+    document.addEventListener(
+      "keydown",
+      function(e) {
+
+        if (
+          e.key === "Escape"
+        ) {
+
+          closeCertificate();
+
+          closeIntroModal();
+
+        }
+
+      }
+    );
+
+
+
+    /* =======================================================
+       CATEGORY LABELS
+    ======================================================== */
+
+    certificateCategories.forEach(
+      function(category,index) {
+
+
+        const count =
+          certificates.filter(
+            certificate =>
+              certificate[2] === index
+          ).length;
+
+
+        const label =
+          document.createElement(
+            "div"
+          );
+
+
+        label.className =
+          "certificate-label";
+
+
+        label.dataset.category =
+          index;
+
+
+        label.style.cssText =
+          category.position;
+
+
+        label.innerHTML =
+          `
+          ${category.name}
+          <sup>${count}</sup>
+          `;
+
+
+        label.onclick =
+          function() {
+
+            const first =
+              certificates.find(
+                certificate =>
+                  certificate[2] === index
+              );
+
+
+            if (first) {
+
+              showCertificate(
+                first
+              );
+
+            }
+
+          };
+
+
+        certificateStage.appendChild(
+          label
+        );
+
+      }
+    );
+
+
+
+    /* =======================================================
+       INITIALIZE
+    ======================================================== */
+
+    buildCertificateRing();
+
+    showCertificate(
+      certificates[0]
+    );
+
+
+    certificateTitle.textContent =
+      "Academic Certificates";
+
+
+    certificateCaption.textContent =
+      "Click any certificate to view";
+
+
+
+    /* =======================================================
+       RESIZE
+    ======================================================== */
+
+    window.addEventListener(
+      "resize",
+      buildCertificateRing
+    );
+
+
+
+    /* =======================================================
+       PAUSE RING WHEN CURSOR IS INSIDE
+       THE CERTIFICATE ELLIPSE
+    ======================================================== */
+
+    const certificateRing =
+      document.querySelector(
+        ".certificate-ring"
+      );
+
+
+    function cursorInsideCertificateRing(
+      x,
+      y
+    ) {
+
+      const bounds =
+        certificateRing.getBoundingClientRect();
+
+
+      const centerX =
+        bounds.left;
+
+
+      const centerY =
+        bounds.top;
+
+
+      const rx =
+        certificateRadius * 1.08;
+
+
+      const ry =
+        certificateRadius * 0.60;
+
+
+      return (
+
+        ((x - centerX) / rx) ** 2 +
+
+        ((y - centerY) / ry) ** 2
+
+      ) <= 1;
+
+    }
+
+
+    window.addEventListener(
+      "mousemove",
+      function(e) {
+
+        certificateStage.classList.toggle(
+          "pause",
+          cursorInsideCertificateRing(
+            e.clientX,
+            e.clientY
+          )
+        );
+
+      }
+    );
+
+
+    document.addEventListener(
+      "mouseleave",
+      function() {
+
+        certificateStage.classList.remove(
+          "pause"
+        );
+
+      }
+    );
+
+
+
+    /* =======================================================
+       NAVBAR ACTIVE SECTION
+    ======================================================== */
+
+    const navLinks =
+      document.querySelectorAll(
+        "nav a"
+      );
+
+
+    const sections =
+      document.querySelectorAll(
+        "section"
+      );
+
+
+    const observer =
+      new IntersectionObserver(
+        entries => {
+
+          entries.forEach(
+            entry => {
+
+              if (
+                entry.isIntersecting
+              ) {
+
+                navLinks.forEach(
+                  link => {
+
+                    link.classList.remove(
+                      "active"
+                    );
+
+                  }
+                );
+
+
+                const activeLink =
+                  document.querySelector(
+                    `nav a[href="#${entry.target.id}"]`
+                  );
+
+
+                if (activeLink) {
+
+                  activeLink.classList.add(
+                    "active"
+                  );
+
+                }
+
+              }
+
+            }
+          );
+
+        },
+        {
+          threshold: 0.45
+        }
+      );
+
+
+    sections.forEach(
+      section =>
+        observer.observe(
+          section
+        )
+    );
+
+  </script>
+
+</body>
+</html>
+```
